@@ -1,0 +1,11 @@
+{
+  "source_video_sha256": "61e89fc6594f1692d2f42c5766b9ec7f35bfef08e7f56ac4c4dea19875e95500",
+  "sha256": "4e6fa5a69bc91d7358f664807fc1d1f60a183e072f42d519e86931fd15c8697d",
+  "fps": 5,
+  "max_size": [
+    320,
+    320
+  ],
+  "frames": 151,
+  "method": "time-subsampled and resized deterministic replay; actions unchanged"
+}

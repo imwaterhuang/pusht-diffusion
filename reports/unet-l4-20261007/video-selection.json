@@ -1,0 +1,12 @@
+{
+  "source_sha256": "01bea94b5227b038f46b5ab842078a4e0292bbb4a4badba44d4df2bece46cfd5",
+  "rule": {
+    "success_example": "first scene_id in frozen order with success_95",
+    "failure_example": "first scene_id in frozen order without success_87",
+    "montage": "all 50 scenes in frozen order; never select only successes"
+  },
+  "choices": {
+    "success": "diffusion-final50-000",
+    "failure": "diffusion-final50-017"
+  }
+}

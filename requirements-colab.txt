@@ -4,6 +4,6 @@ huggingface-hub>=0.34,<1.0
 pyarrow>=18
 Pillow>=11
 gym-pusht==0.1.6
+pymunk==6.11.1
 imageio>=2.36
 av>=14
-

@@ -145,7 +145,7 @@ def evaluate(
                     options={'reset_to_state': SceneState(**record['state']).as_array()},
                 )
                 history.extend([obs, obs])
-                initial_coverage = float(info.get('coverage', 0))
+                initial_coverage = float(info['coverage'])
                 initial_position = np.asarray(obs['agent_pos']).tolist()
                 reason = 'threshold_95' if initial_coverage > 0.95 else 'time_limit'
                 ended = initial_coverage > 0.95
@@ -190,7 +190,7 @@ def evaluate(
                         before = np.asarray(history[-1]['agent_pos']).tolist()
                         obs, reward, terminated, truncated, info = env.step(action)
                         history.append(obs)
-                        coverage = float(info.get('coverage', 0))
+                        coverage = float(info['coverage'])
                         trace.append(
                             {
                                 'step': len(trace) + 1,

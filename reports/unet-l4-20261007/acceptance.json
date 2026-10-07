@@ -1,0 +1,323 @@
+{
+  "schema": "pusht_acceptance_v1",
+  "evidence_kind": "formal",
+  "summary": {
+    "episode_count": 50,
+    "mean_final_coverage": 0.7022960872244465,
+    "mean_max_coverage": 0.7609350276757932,
+    "mean_steps": 233.34,
+    "inference_p50_ms": 181.60423900008027,
+    "inference_p95_ms": 189.43044140019083,
+    "success_count_87": 38,
+    "success_rate_87": 0.76,
+    "wilson_95_87": [
+      0.6258731624205708,
+      0.8570260860300828
+    ],
+    "mean_first_crossing_87": 141.89473684210526,
+    "success_count_95": 31,
+    "success_rate_95": 0.62,
+    "wilson_95_95": [
+      0.4815044693099298,
+      0.7413721068980641
+    ],
+    "mean_first_crossing_95": 192.48387096774192
+  },
+  "initial_success_counts": {
+    "87": 0,
+    "95": 0
+  },
+  "selected_step": 40000,
+  "checkpoint_sha256": "6d8e1fcb0342f377e6973be82139b63302feef64f0cf037f6db9b75da13873b4",
+  "scenes_hash": "631acfdc20d360463e989b607e391b9b636a7c899cd5fba5bb3d6ad46da3a613",
+  "protocol": {
+    "max_steps": 300,
+    "execute_steps": 4,
+    "thresholds": [
+      0.87,
+      0.95
+    ],
+    "comparison": ">",
+    "sampling": {
+      "method": "ddim",
+      "steps": 20,
+      "eta": 0.0,
+      "noise_seed": 0
+    }
+  },
+  "protocol_amendment": "user_requested_final_50_v1",
+  "training": {
+    "episodes": 206,
+    "training_seeds": [
+      0
+    ],
+    "weights": "ema"
+  },
+  "runtime": {
+    "packages": {
+      "gym-pusht": "0.1.6",
+      "gymnasium": "1.3.0",
+      "pymunk": "6.11.1",
+      "shapely": "2.1.2",
+      "pygame": "2.6.1",
+      "numpy": "2.1.3",
+      "Pillow": "11.3.0"
+    },
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "device": "cuda",
+    "gpu": "NVIDIA L4"
+  },
+  "sources": {
+    "results": {
+      "path": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/final50/result.json",
+      "sha256": "01bea94b5227b038f46b5ab842078a4e0292bbb4a4badba44d4df2bece46cfd5",
+      "report_copy": "evidence/results.json"
+    },
+    "scenes": {
+      "path": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/selected/final50-scenes.json",
+      "sha256": "140cab15f644baaea92b8a3d1be8e63ff6fa400561da44966303b19fa6efbc54",
+      "report_copy": "evidence/scenes.json"
+    },
+    "selection": {
+      "path": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/selected/selection.json",
+      "sha256": "b992e60ebbaed046049b3f6b040fdef930fda0e2f7919badb0a5c1dfcebfcaf6",
+      "report_copy": "evidence/selection.json"
+    },
+    "manifest": {
+      "path": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/final50/manifest.json",
+      "sha256": "8716aba5703be04042ffccd0f706caba7a8c464b880c6f9dbd30a1712fd7552c",
+      "report_copy": "evidence/manifest.json"
+    }
+  },
+  "figures": {
+    "success_rates": "success-rates.png",
+    "coverage_distribution": "coverage-distribution.png",
+    "training_loss": {
+      "path": "training-loss.png",
+      "source_sha256": "415e1fb0cae893d2089904e6a345ae77c63483768cd51a408a0e2772009a068b",
+      "records": 40000,
+      "loss_values": "rounded console values"
+    }
+  },
+  "videos": {
+    "success": {
+      "status": "verified_replay",
+      "scene_id": "diffusion-final50-000",
+      "video": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/publication/videos/success.mp4",
+      "gif": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/publication/videos/success.gif",
+      "provenance": {
+        "source_results": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/final50/result.json",
+        "source_sha256": "01bea94b5227b038f46b5ab842078a4e0292bbb4a4badba44d4df2bece46cfd5",
+        "scene_id": "diffusion-final50-000",
+        "evidence_kind": "formal",
+        "video_sha256": "acdc0daf455a0f6b7a0514e9dde14f6775b584311210203ef50c15c83e95b83f",
+        "max_coverage_error": 0.0,
+        "frames": 175,
+        "method": "deterministic replay of saved physical actions"
+      },
+      "gif_provenance": {
+        "source_video_sha256": "acdc0daf455a0f6b7a0514e9dde14f6775b584311210203ef50c15c83e95b83f",
+        "sha256": "83a0938e3b4772dade415e80f5334728f7de7afc628d79b291de3b7a55d8a7ba",
+        "fps": 5,
+        "max_size": [
+          320,
+          320
+        ],
+        "frames": 88,
+        "method": "time-subsampled and resized deterministic replay; actions unchanged"
+      }
+    },
+    "failure": {
+      "status": "verified_replay",
+      "scene_id": "diffusion-final50-017",
+      "video": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/publication/videos/failure.mp4",
+      "gif": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/publication/videos/failure.gif",
+      "provenance": {
+        "source_results": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/final50/result.json",
+        "source_sha256": "01bea94b5227b038f46b5ab842078a4e0292bbb4a4badba44d4df2bece46cfd5",
+        "scene_id": "diffusion-final50-017",
+        "evidence_kind": "formal",
+        "video_sha256": "61e89fc6594f1692d2f42c5766b9ec7f35bfef08e7f56ac4c4dea19875e95500",
+        "max_coverage_error": 2.220446049250313e-16,
+        "frames": 301,
+        "method": "deterministic replay of saved physical actions"
+      },
+      "gif_provenance": {
+        "source_video_sha256": "61e89fc6594f1692d2f42c5766b9ec7f35bfef08e7f56ac4c4dea19875e95500",
+        "sha256": "4e6fa5a69bc91d7358f664807fc1d1f60a183e072f42d519e86931fd15c8697d",
+        "fps": 5,
+        "max_size": [
+          320,
+          320
+        ],
+        "frames": 151,
+        "method": "time-subsampled and resized deterministic replay; actions unchanged"
+      }
+    }
+  },
+  "montage": {
+    "source_results": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/final50/result.json",
+    "source_sha256": "01bea94b5227b038f46b5ab842078a4e0292bbb4a4badba44d4df2bece46cfd5",
+    "video_sha256": "fe8b2cd76a38549f0cc1ccfdb1d5f093833b417b6157a2dd6607bd6ae3bae00e",
+    "scene_ids": [
+      "diffusion-final50-000",
+      "diffusion-final50-001",
+      "diffusion-final50-002",
+      "diffusion-final50-003",
+      "diffusion-final50-004",
+      "diffusion-final50-005",
+      "diffusion-final50-006",
+      "diffusion-final50-007",
+      "diffusion-final50-008",
+      "diffusion-final50-009",
+      "diffusion-final50-010",
+      "diffusion-final50-011",
+      "diffusion-final50-012",
+      "diffusion-final50-013",
+      "diffusion-final50-014",
+      "diffusion-final50-015",
+      "diffusion-final50-016",
+      "diffusion-final50-017",
+      "diffusion-final50-018",
+      "diffusion-final50-019",
+      "diffusion-final50-020",
+      "diffusion-final50-021",
+      "diffusion-final50-022",
+      "diffusion-final50-023",
+      "diffusion-final50-024",
+      "diffusion-final50-025",
+      "diffusion-final50-026",
+      "diffusion-final50-027",
+      "diffusion-final50-028",
+      "diffusion-final50-029",
+      "diffusion-final50-030",
+      "diffusion-final50-031",
+      "diffusion-final50-032",
+      "diffusion-final50-033",
+      "diffusion-final50-034",
+      "diffusion-final50-035",
+      "diffusion-final50-036",
+      "diffusion-final50-037",
+      "diffusion-final50-038",
+      "diffusion-final50-039",
+      "diffusion-final50-040",
+      "diffusion-final50-041",
+      "diffusion-final50-042",
+      "diffusion-final50-043",
+      "diffusion-final50-044",
+      "diffusion-final50-045",
+      "diffusion-final50-046",
+      "diffusion-final50-047",
+      "diffusion-final50-048",
+      "diffusion-final50-049"
+    ],
+    "scene_count": 50,
+    "frames": 1505,
+    "fps": 10,
+    "duration_seconds": 150.5,
+    "size": [
+      960,
+      544
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "scene_ids": [
+          "diffusion-final50-000",
+          "diffusion-final50-001",
+          "diffusion-final50-002",
+          "diffusion-final50-003",
+          "diffusion-final50-004",
+          "diffusion-final50-005",
+          "diffusion-final50-006",
+          "diffusion-final50-007",
+          "diffusion-final50-008",
+          "diffusion-final50-009"
+        ],
+        "frames": 301,
+        "max_coverage_error": 5.551115123125783e-16
+      },
+      {
+        "page": 2,
+        "scene_ids": [
+          "diffusion-final50-010",
+          "diffusion-final50-011",
+          "diffusion-final50-012",
+          "diffusion-final50-013",
+          "diffusion-final50-014",
+          "diffusion-final50-015",
+          "diffusion-final50-016",
+          "diffusion-final50-017",
+          "diffusion-final50-018",
+          "diffusion-final50-019"
+        ],
+        "frames": 301,
+        "max_coverage_error": 5.551115123125783e-16
+      },
+      {
+        "page": 3,
+        "scene_ids": [
+          "diffusion-final50-020",
+          "diffusion-final50-021",
+          "diffusion-final50-022",
+          "diffusion-final50-023",
+          "diffusion-final50-024",
+          "diffusion-final50-025",
+          "diffusion-final50-026",
+          "diffusion-final50-027",
+          "diffusion-final50-028",
+          "diffusion-final50-029"
+        ],
+        "frames": 301,
+        "max_coverage_error": 3.3306690738754696e-16
+      },
+      {
+        "page": 4,
+        "scene_ids": [
+          "diffusion-final50-030",
+          "diffusion-final50-031",
+          "diffusion-final50-032",
+          "diffusion-final50-033",
+          "diffusion-final50-034",
+          "diffusion-final50-035",
+          "diffusion-final50-036",
+          "diffusion-final50-037",
+          "diffusion-final50-038",
+          "diffusion-final50-039"
+        ],
+        "frames": 301,
+        "max_coverage_error": 4.996003610813204e-16
+      },
+      {
+        "page": 5,
+        "scene_ids": [
+          "diffusion-final50-040",
+          "diffusion-final50-041",
+          "diffusion-final50-042",
+          "diffusion-final50-043",
+          "diffusion-final50-044",
+          "diffusion-final50-045",
+          "diffusion-final50-046",
+          "diffusion-final50-047",
+          "diffusion-final50-048",
+          "diffusion-final50-049"
+        ],
+        "frames": 301,
+        "max_coverage_error": 4.440892098500626e-16
+      }
+    ],
+    "max_coverage_error": 5.551115123125783e-16,
+    "method": "all 50 scenes in frozen order; exact physical-action replay; 5x2 tiles per page; finished scenes hold their last frame; no outcome-based omissions"
+  },
+  "limits": [
+    "全部 206 条演示用于训练；仅一个训练随机种子（seed=0），没有跨训练种子稳定性证据。",
+    "最终场景在开发集选模锁定后独立随机生成，并排除记录在案的开发/debug种子及初始状态；无法证明与训练姿态完全不重合。",
+    "Wilson 95% 区间反映这 50 个场景的抽样不确定性；不是未来成功率保证，也不是跨训练种子的误差条。",
+    "两项成功均按整条轨迹（包括初始状态）的最大 coverage 严格大于阈值计算；不是终态覆盖率成功率。",
+    "达到 >95% 或环境终止则提前结束，否则执行最多 300 步；达到 >87% 后仍继续运行。",
+    "loss 只作为噪声预测训练诊断，不能据此断言闭环策略成功；本报告结论来自最终闭环 trace。",
+    "两个示例视频按预声明规则选取，只用于展示；另提供包含全部 50 场的固定顺序拼接视频，短轨迹结束后停帧标记。",
+    "该报告核验冻结选模记录中的排序和哈希关联；未重新运行开发评测或训练。"
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "kind": "real_l4_preflight",
+  "num_workers": 8,
+  "passed": true,
+  "code_fingerprint": "05527b006d017a2ec1e9dfcfb2e3e02d691d30606827b82d976c401ac0d6a759",
+  "config_fingerprint": "5c0f6f611b022b5aa03bbf4d32db77876d0f578aec523edadb711cfa820bb04a",
+  "limitations": [
+    "Not closed-loop policy evidence",
+    "Diagnostic weights are discarded; formal run starts fresh"
+  ],
+  "device": "NVIDIA L4",
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "diffusers": "0.35.2",
+    "numpy": "2.1.3"
+  },
+  "cuda_version": "13.0",
+  "hardware": {
+    "gpu": "NVIDIA L4",
+    "gpu_total_memory_bytes": 23659151360
+  },
+  "deterministic_algorithms": true,
+  "data_fingerprint": "1acd5a4a79f5a8e4a56a5dbb209d49242565ca1e5d89b994df2b537f5be04a8c",
+  "elapsed_seconds": 71.59302990799915,
+  "smoke": {
+    "passed": true,
+    "updates": 100,
+    "drive_checksum_valid": true
+  },
+  "recovery": {
+    "passed": true,
+    "start_step": 100,
+    "end_step": 102,
+    "exact_equal_fields": [
+      "step",
+      "raw",
+      "ema",
+      "optimizer",
+      "lr",
+      "sampler",
+      "rng"
+    ],
+    "loaded_drive_mirror": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/preflight-workers8/smoke100/last.pt"
+  },
+  "profile": {
+    "batch_size": 64,
+    "num_workers": 8,
+    "warmup_steps": 2,
+    "measured_steps": 20,
+    "mean_seconds": {
+      "data_wait_s": 0.0021495801001037763,
+      "transfer_s": 0.006137418900061675,
+      "update_s": 0.0946126065000044
+    },
+    "measurements": [
+      {
+        "data_wait_s": 0.002892399000302248,
+        "transfer_s": 0.0060289080001894035,
+        "update_s": 0.0940637779995086,
+        "loss": 1.4352209568023682
+      },
+      {
+        "data_wait_s": 0.00021599299998342758,
+        "transfer_s": 0.00779903800048487,
+        "update_s": 0.09955750300014188,
+        "loss": 1.544357419013977
+      },
+      {
+        "data_wait_s": 0.0002191459998357459,
+        "transfer_s": 0.00578913899971667,
+        "update_s": 0.09130293300040648,
+        "loss": 1.4380733966827393
+      },
+      {
+        "data_wait_s": 0.00017809499968279852,
+        "transfer_s": 0.005880120000256284,
+        "update_s": 0.09544287199969403,
+        "loss": 1.455368161201477
+      },
+      {
+        "data_wait_s": 0.0002285170003233361,
+        "transfer_s": 0.005879913000171655,
+        "update_s": 0.09409264599980816,
+        "loss": 1.42655348777771
+      },
+      {
+        "data_wait_s": 0.00024260700047307182,
+        "transfer_s": 0.0058064509994437685,
+        "update_s": 0.0941540290004923,
+        "loss": 1.3418341875076294
+      },
+      {
+        "data_wait_s": 0.015866638000261446,
+        "transfer_s": 0.005997239999487647,
+        "update_s": 0.09027889400022104,
+        "loss": 1.3795241117477417
+      },
+      {
+        "data_wait_s": 0.005060358000264387,
+        "transfer_s": 0.006015412000124343,
+        "update_s": 0.09762634900016565,
+        "loss": 1.2572187185287476
+      },
+      {
+        "data_wait_s": 0.0002887979999286472,
+        "transfer_s": 0.0064386120002382086,
+        "update_s": 0.09392940599991562,
+        "loss": 1.2573639154434204
+      },
+      {
+        "data_wait_s": 0.00024999500055855606,
+        "transfer_s": 0.0059293730000717915,
+        "update_s": 0.097696819999328,
+        "loss": 1.3185722827911377
+      },
+      {
+        "data_wait_s": 0.0002465010002197232,
+        "transfer_s": 0.005929910000304517,
+        "update_s": 0.09365932800028531,
+        "loss": 1.3729263544082642
+      },
+      {
+        "data_wait_s": 0.00024960600057966076,
+        "transfer_s": 0.007621294999808015,
+        "update_s": 0.09562754899980064,
+        "loss": 1.2205861806869507
+      },
+      {
+        "data_wait_s": 0.00022925600023881998,
+        "transfer_s": 0.005934532000537729,
+        "update_s": 0.09402205799960939,
+        "loss": 1.2871979475021362
+      },
+      {
+        "data_wait_s": 0.0002445539994369028,
+        "transfer_s": 0.0059030150005128235,
+        "update_s": 0.09474441899965313,
+        "loss": 1.1850115060806274
+      },
+      {
+        "data_wait_s": 0.002835735000189743,
+        "transfer_s": 0.006040283999936946,
+        "update_s": 0.09440628199990897,
+        "loss": 1.128832459449768
+      },
+      {
+        "data_wait_s": 0.0027197039999009576,
+        "transfer_s": 0.0059815510003318195,
+        "update_s": 0.095772663000389,
+        "loss": 1.0672897100448608
+      },
+      {
+        "data_wait_s": 0.002635819999341038,
+        "transfer_s": 0.005808740000247781,
+        "update_s": 0.09360685699994065,
+        "loss": 1.0517572164535522
+      },
+      {
+        "data_wait_s": 0.002657147000718396,
+        "transfer_s": 0.005890439999348018,
+        "update_s": 0.09441041700029018,
+        "loss": 1.0877093076705933
+      },
+      {
+        "data_wait_s": 0.002734886999860464,
+        "transfer_s": 0.0060397659999580355,
+        "update_s": 0.0943115840000246,
+        "loss": 1.0262144804000854
+      },
+      {
+        "data_wait_s": 0.0029958459999761544,
+        "transfer_s": 0.00603463900006318,
+        "update_s": 0.09354574300050444,
+        "loss": 1.0697274208068848
+      }
+    ],
+    "estimated_40000_update_hours_excluding_saves_eval": 1.1433289500018873
+  },
+  "small_batch_fit": {
+    "passed": true,
+    "sample_indices": [
+      5557,
+      18325,
+      17987,
+      9428,
+      1470,
+      14052,
+      1291,
+      5985,
+      3212,
+      20521,
+      22046,
+      22312,
+      18488,
+      24225,
+      2908,
+      13836
+    ],
+    "batch_size": 16,
+    "updates": 400,
+    "fixed_probe_count": 4,
+    "checks": [
+      {
+        "step": 0,
+        "fixed_probe_loss": 1.458851933479309
+      },
+      {
+        "step": 100,
+        "fixed_probe_loss": 0.24172208458185196,
+        "training_loss": 0.18863222002983093
+      },
+      {
+        "step": 200,
+        "fixed_probe_loss": 0.1500867512077093,
+        "training_loss": 0.1273474097251892
+      },
+      {
+        "step": 300,
+        "fixed_probe_loss": 0.10644001699984074,
+        "training_loss": 0.05485829710960388
+      },
+      {
+        "step": 400,
+        "fixed_probe_loss": 0.09128946252167225,
+        "training_loss": 0.04910612106323242
+      }
+    ],
+    "final_initial_ratio": 0.0625762357554342,
+    "diagnostic_ratio_threshold": 0.3,
+    "pretrained_conv1_verified": true,
+    "parameter_count": 25017410,
+    "train_timesteps": 100,
+    "lr_schedule": "Unmodified formal 500-step warmup and 40000-step cosine schedule"
+  },
+  "peak_gpu_allocated_bytes": 1234632192
+}

@@ -1,0 +1,10 @@
+{
+  "source_results": "/content/drive/MyDrive/pusht-diffusion/20261007-unet-seed0/evaluation-20261007/final50/result.json",
+  "source_sha256": "01bea94b5227b038f46b5ab842078a4e0292bbb4a4badba44d4df2bece46cfd5",
+  "scene_id": "diffusion-final50-000",
+  "evidence_kind": "formal",
+  "video_sha256": "acdc0daf455a0f6b7a0514e9dde14f6775b584311210203ef50c15c83e95b83f",
+  "max_coverage_error": 0.0,
+  "frames": 175,
+  "method": "deterministic replay of saved physical actions"
+}

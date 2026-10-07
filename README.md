@@ -2,7 +2,30 @@
 
 基于视觉观测的 Push-T 模仿学习项目：使用条件一维 U-Net 预测动作噪声，通过扩散采样生成动作序列，并在仿真中执行、重新观测和规划。项目覆盖数据审计、模型实现、训练与断点恢复、闭环评测及交互演示。
 
-> **当前状态：开发与训练阶段，尚未完成正式训练和最终评测。** 下方训练结果留空。短训练、恢复检查和工程测试不代表策略已经学会任务，也不代表复现了论文效果。
+**已完成 U-Net 正式训练、8 个检查点的开发集选模，以及 50 个新随机场景的最终闭环评测。** 模型与训练核心由学习者实现；目前只有一个训练种子的仿真实验，不宣称复现论文数值或具备实机能力。
+
+## 最终结果 · 2026-10-07
+
+选择 **40,000 步 EMA 权重**，在选模锁定后生成的 50 个场景上测试。87% 和 95% 是物体与目标的覆盖率阈值，下表成功率是超过对应阈值的场景比例。
+
+| 指标 | 结果 | Wilson 95% 区间 |
+| --- | ---: | ---: |
+| 最大覆盖率 >87% | **38/50 · 76%** | 62.6%–85.7% |
+| 最大覆盖率 >95% | **31/50 · 62%** | 48.2%–74.1% |
+| 平均最大 / 终态覆盖率 | 76.09% / 70.23% | — |
+| L4 单次规划耗时 p50 / p95 | 181.6 / 189.4 ms | — |
+
+[最终验收报告](reports/unet-l4-20261007/acceptance.md) · [逐场结果](reports/unet-l4-20261007/per-scene.csv) · [模型、视频与完整证据下载](https://github.com/imwaterhuang/pusht-diffusion/releases/tag/unet-l4-final50-20261007)
+
+### 最终评测视频
+
+示例按事先固定的规则选取：场景顺序中首个 >95% 成功案例，以及首个未超过 87% 的失败案例。视频重放实际保存的动作；全部 50 场都包含在汇总视频中。
+
+| 成功示例 · 场景 000 | 失败示例 · 场景 017 |
+| --- | --- |
+| [![成功回放](reports/unet-l4-20261007/videos/success.gif)](https://github.com/imwaterhuang/pusht-diffusion/releases/download/unet-l4-final50-20261007/success.mp4) | [![失败回放](reports/unet-l4-20261007/videos/failure.gif)](https://github.com/imwaterhuang/pusht-diffusion/releases/download/unet-l4-final50-20261007/failure.mp4) |
+
+[观看全部 50 场回放](https://github.com/imwaterhuang/pusht-diffusion/releases/download/unet-l4-final50-20261007/all50.mp4)（5 页，每页 10 场；已结束的场景保持最后一帧并标记）。
 
 ![系统设计](docs/assets/architecture-overview.png)
 
@@ -15,7 +38,7 @@
 | 数据审计、尾部掩码、检查点及恢复状态保存 | 已实现 |
 | DDIM / DDPM 采样、闭环评测、动作回放、网页交互 | 已接入 |
 | Colab L4 预检查与训练脚本 | 已提供；运行需要外部数据与 GPU 环境 |
-| 正式训练、开发集选点、最终独立场景评测 | 待完成 |
+| 正式训练、开发集选点、最终独立场景评测 | 已完成：40k 更新、8×50 开发评测、50 场最终评测 |
 | DiT 骨干及与 U-Net 的完整比较 | 待实现 / 待验证 |
 
 代码与历史验收记录见 [PROGRESS.md](PROGRESS.md)。其中带日期的旧记录描述当时版本，不能作为当前代码全套测试通过的证明。`docs/` 内的 DiT 图和部分接口文档描述规划，不代表对应模型已经可运行。
@@ -61,7 +84,7 @@ DDIM 迭代去噪 → 16 步二维动作 → 执行前 4 步 → 重新观测
 | 视觉编码器 | ResNet-18，ImageNet 初始化 |
 | 训练扩散日程 | 100 步，余弦日程，预测 epsilon |
 | 默认推理 | DDIM，20 步，`eta=0` |
-| 计划训练预算 | 40,000 次更新，batch 64，seed 0 |
+| 实际训练预算 | 40,000 次更新，batch 64，seed 0 |
 | 优化器 | AdamW，学习率 `1e-4` |
 | 学习率 | 500 步预热，余弦下降 |
 | 数值精度 | float32 |
@@ -119,9 +142,11 @@ Colab 专用入口是 [colab_preflight.py](scripts/colab_preflight.py) 和 [cola
 
 ## 评测与交互
 
-已有 50 个开发场景；最终 100 个场景尚待模型选择锁定后生成。单回合最多 300 步：主指标为曾达到 `coverage > 0.87`，同时记录 `coverage > 0.95` 与最大覆盖率。主阈值达到后继续执行，直到严格阈值达到、环境终止或步数上限。
+先在相同的 50 个开发场景比较 5k–40k 的 8 个 EMA 快照，按 >87% 成功数、平均最大覆盖率、较早训练步数依次选模。锁定后独立随机生成最终 50 个场景；这是按本次要求记录的 `user_requested_final_50_v1` 协议修订，原配置中的 100 场默认值保留用于历史追溯。
 
-下面命令需要自行提供训练后的兼容检查点；仓库不附带训练完成的权重。
+单回合最多 300 步：主指标为整条轨迹（包括初始状态）曾达到 `coverage > 0.87`，同时记录 `coverage > 0.95` 与最大覆盖率。主阈值达到后继续执行，直到严格阈值达到、环境终止或步数上限。开发选模与最终测试分开，最终场景不参与检查点选择。
+
+开发场景可使用现有通用评测入口：
 
 ```bash
 python -m pusht_diffusion eval --model unet \
@@ -130,6 +155,19 @@ python -m pusht_diffusion eval --model unet \
 python -m pusht_diffusion report runs/unet-development.json \
   --output runs/unet-development-report.json
 ```
+
+复测本次最终 50 场时，从 [Release](https://github.com/imwaterhuang/pusht-diffusion/releases/tag/unet-l4-final50-20261007) 下载 `best.pt` 和 `best.pt.sha256.json` 到 `runs/unet/`，使用支持最终 v2 协议及逐场恢复的入口：
+
+```bash
+# Colab 保留已有 CUDA PyTorch；固定仿真依赖以匹配本次评测。
+python -m pip install -r requirements-colab.txt -r requirements-evaluation.txt
+PYTHONPATH=src python scripts/colab_evaluate.py \
+  --checkpoint runs/unet/best.pt --audit reports/data-audit.json \
+  --scenes reports/unet-l4-20261007/evidence/scenes.json \
+  --output-dir runs/final50-reproduction --device cuda
+```
+
+已记录的完整环境版本见 [environment-extra.json](reports/unet-l4-20261007/environment-extra.json)。不同软件版本、硬件或数值执行方式仍可能影响轨迹；上述命令不是跨平台逐位一致的承诺。
 
 交互页面当前要求加载 ACT 基线，扩散模型可选：
 
@@ -142,17 +180,15 @@ python -m pusht_diffusion serve \
 
 页面支持暂停、继续、同场景重放、换场景及物体干预。交互调试不写入正式评测成绩。ACT 使用单帧观测和自身归一化约定，与两帧扩散策略的差异不能全部归因于模型骨干。
 
-## 训练结果
+## 训练诊断与结果边界
 
-**待正式训练、检查点选择及独立闭环评测完成后补充；所有数值暂留空。**
+![训练损失](reports/unet-l4-20261007/training-loss.png)
 
-| 模型 | 检查点 / 训练步数 | 成功率（> 0.87） | 严格成功率（> 0.95） | 平均最大覆盖率 | 推理耗时 |
-| --- | --- | --- | --- | --- | --- |
-| Diffusion Policy · U-Net | | | | | |
-| Diffusion Policy · DiT（计划） | | | | | |
-| ACT（同协议基线） | | | | | |
+曲线来自已舍入的训练日志；loss 衡量噪声预测误差，策略效果以顶部闭环结果为准。完整训练完成 40,000 次更新，检查点和 Drive 镜像校验通过。
 
-训练曲线、成功与失败视频、跨种子统计和对比结论均待补充。`reports/` 中现有短闭环、预检查及历史测试文件仅用于工程追溯，不填入上表。
+本次全部 206 条专家演示均用于训练，最终测试是独立生成的仿真初始场景，并非保留的专家演示测试集。已排除记录在案的开发与调试场景，但原数据缺少完整物体姿态，不能证明与训练姿态完全不重合。仅 seed=0 一次训练，尚无跨训练种子稳定性证据。
+
+DiT 尚未完成；ACT 尚未按这批最终场景评测，因此不提供三模型排名。历史短闭环和预检查仅作工程追溯。
 
 ## 代码导航
 

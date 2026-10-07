@@ -1,6 +1,17 @@
 # 当前进度与验收
 
-## 2026-10-07 更新：Colab L4 正式训练已启动
+## 2026-10-07 更新：U-Net 最终 50 场评测完成
+
+- 在固定 50 个开发场景上比较 5k–40k 共 8 个 EMA 快照（400 场）。按 >87% 成功数、平均最大覆盖率、较早步数排序，选定 step40000；开发成绩 43/50、平均最大覆盖率 86.3927%。
+- 锁定检查点后独立生成最终 50 场，generation seed=2802778101；采用用户要求的 `user_requested_final_50_v1` 协议修订，原 100 场默认配置不冒充已完成。
+- 最终结果：>87% 为 **38/50（76%）**；>95% 为 **31/50（62%）**；平均最大/终态覆盖率 76.09%/70.23%；L4 单进程规划延迟 p50/p95 为181.6/189.4ms。
+- 证据入口：[最终验收](reports/unet-l4-20261007/acceptance.md)、[逐场CSV](reports/unet-l4-20261007/per-scene.csv)、冻结场景、选模锁、完整轨迹与全部50场动作回放。模型及视频在 README 链接的 Release 提供。
+- 最佳检查点 SHA256：`6d8e1fcb0342f377e6973be82139b63302feef64f0cf037f6db9b75da13873b4`。
+- 固定 Pymunk 6.11.1 兼容 gym-pusht 0.1.6；环境包装层补充真实初始 coverage，避免 reset 信息缺失时被计为0。真实观察与物理步进一致性检查通过；未改用户模型/训练核心，也未新增 mask 防护。
+- 本次评测、选择、报告及场景相关检查共 **19 passed**；不代表旧全套测试已适配或通过。
+- 全206条演示训练、单训练种子seed0；最终场景不是专家演示留出集，不能证明与训练姿态完全不重合。DiT与同协议ACT比较尚未完成。
+
+## 2026-10-07 更新：Colab L4 正式训练已完成
 
 - 用户已实现观测编码、U-Net、扩散损失、参数更新和 EMA。旧的“所有入口未实现”描述仅属于下方 9 月交付快照。
 - CPU 真训练 100 步通过：batch64，前10步平均 loss 1.4208，后10步 0.1763；完整检查点保存与重载通过。证据：`runs/cpu-smoke-100-20261007/verification.json`。
@@ -10,7 +21,7 @@
 - 正式协议：40,000 步、batch64、seed0、float32；每1,000步保存 last，每5,000步保留独立候选快照；开发场景选点延后执行。
 - L4 + 8 个 DataLoader workers 的真实预检查已通过：100步训练、Drive校验和、精确恢复、小批拟合。固定16样本的独立噪声检查 loss 1.45885 → 0.09129（400步）。证据：`reports/colab-l4-20261007/preflight-workers8.json`。
 - 20步同步测速平均 0.1029秒/步（数据等待0.00215秒、传输0.00614秒、更新0.09461秒），40k纯更新估计1.143小时，未计保存和评测。
-- 正式训练已在 NVIDIA L4 启动，已观察到 step244/40000、loss0.1059；这仅证明启动及更新持续推进，不代表训练完成。
+- 用户报告页面中断后，重新连接 L4 并从 Drive 核实：`last.pt` 已完成40,000步，校验和与完整检查点结构验证通过，`status.json` 为 `complete`，无需补训。最终loss0.0042、近100步均值0.0069；原运行耗时4578.33秒。证据：`reports/colab-l4-20261007/completion-verification.json`。这证明训练及保存完成，闭环成功率仍待评测。
 - Notebook：https://colab.research.google.com/drive/1idb6vRFXNuDWisXpInCqWjp17I31KRyJ
 - Drive目录：`MyDrive/pusht-diffusion/20261007-unet-seed0/formal/`；运行时数据在本地/content，检查点与日志持久保存Drive。
 - 最终8-worker源码和数据包：`pusht-diffusion-colab-20261007-workers8.zip`，云端SHA256 `118ea94039afc5e6d9babf47b752cd15c8db93f34561cd9355721a739d38b94b`；完整初始包另行保留。

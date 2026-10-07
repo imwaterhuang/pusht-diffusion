@@ -26,6 +26,14 @@ class SceneState:
         return asdict(self)
 
 
+class ResetCoverage(gym.Wrapper):
+    """Expose the actual reset coverage, which gym-pusht omits from reset info."""
+
+    def reset(self, **kwargs):
+        observation, info = self.env.reset(**kwargs)
+        return observation, {**info, 'coverage': float(self.unwrapped._get_coverage())}
+
+
 def make_env(max_steps: int = 300, *, continuous: bool = False):
     env = gym.make(
         'gym_pusht/PushT-v0',
@@ -37,7 +45,7 @@ def make_env(max_steps: int = 300, *, continuous: bool = False):
         visualization_height=384,
         max_episode_steps=max_steps,
     )
-    return env.unwrapped if continuous else env
+    return env.unwrapped if continuous else ResetCoverage(env)
 
 
 def random_scene(seed: int) -> SceneState:

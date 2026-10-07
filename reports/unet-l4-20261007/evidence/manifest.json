@@ -1,0 +1,38 @@
+{
+  "schema": "pusht_resumable_evaluation_v1",
+  "checkpoint_sha256": "6d8e1fcb0342f377e6973be82139b63302feef64f0cf037f6db9b75da13873b4",
+  "scenes_file_sha256": "140cab15f644baaea92b8a3d1be8e63ff6fa400561da44966303b19fa6efbc54",
+  "scenes_hash": "631acfdc20d360463e989b607e391b9b636a7c899cd5fba5bb3d6ad46da3a613",
+  "audit_sha256": "337ec98009eef511d3fa53360b5579e3799bde2ae26162d0035202e8dcaa4eca",
+  "evaluator_code_fingerprint": "890abee4de7eff02136aedfd017acda5d30f63f012d679309efbe8c2740f8db9",
+  "runner_sha256": "cf61372c783c26f2d3b9bf741e582cd7aa3f640f744e601675b85260ef1cc4ff",
+  "config_sha256": "5c0f6f611b022b5aa03bbf4d32db77876d0f578aec523edadb711cfa820bb04a",
+  "scene_count": 50,
+  "protocol": {
+    "max_steps": 300,
+    "execute_steps": 4,
+    "thresholds": [
+      0.87,
+      0.95
+    ],
+    "comparison": ">",
+    "stop": "coverage > .95 or environment done or max_steps",
+    "history_update": "every_environment_step"
+  },
+  "protocol_amendment": "user_requested_final_50_v1",
+  "runtime": {
+    "packages": {
+      "gym-pusht": "0.1.6",
+      "gymnasium": "1.3.0",
+      "pymunk": "6.11.1",
+      "shapely": "2.1.2",
+      "pygame": "2.6.1",
+      "numpy": "2.1.3",
+      "Pillow": "11.3.0"
+    },
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "device": "cuda",
+    "gpu": "NVIDIA L4"
+  }
+}
