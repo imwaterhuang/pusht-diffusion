@@ -1,0 +1,33 @@
+{
+  "results": [
+    {
+      "source": "/Users/marscolonizer/Documents/ChatGPT/Diffusion/pusht-diffusion/reports/engineering/act-smoke.json",
+      "sha256": "21f6cfba6d07d8ca68c0a753d5e42f774d45939adc06fac546edf3b63d701ba2",
+      "policy": "act",
+      "evidence_kind": "real_smoke",
+      "summary": {
+        "episode_count": 1,
+        "mean_final_coverage": 0.14573960597199606,
+        "mean_max_coverage": 0.14573960597199606,
+        "mean_steps": 12.0,
+        "inference_p50_ms": 6.773125001927838,
+        "inference_p95_ms": 7.212850597716169,
+        "success_count_87": 0,
+        "success_rate_87": 0.0,
+        "wilson_95_87": [
+          0,
+          0.7934506856227626
+        ],
+        "mean_first_crossing_87": null,
+        "success_count_95": 0,
+        "success_rate_95": 0.0,
+        "wilson_95_95": [
+          0,
+          0.7934506856227626
+        ],
+        "mean_first_crossing_95": null
+      }
+    }
+  ],
+  "paired": []
+}

@@ -1,0 +1,9 @@
+# 保留 Colab 自带的 CUDA torch/torchvision；不要用本机的环境锁文件覆盖它们。
+diffusers==0.35.2
+huggingface-hub>=0.34,<1.0
+pyarrow>=18
+Pillow>=11
+gym-pusht==0.1.6
+imageio>=2.36
+av>=14
+

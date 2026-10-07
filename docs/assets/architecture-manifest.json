@@ -1,0 +1,35 @@
+{
+  "generator": "built-in image_gen via imagegen skill",
+  "status": "design_only_not_implemented_or_trained",
+  "pixel_postprocessing": false,
+  "files": [
+    {
+      "file": "architecture-overview.png",
+      "source_image": "/Users/marscolonizer/.codex/generated_images/01a0d2ce-0032-7272-959e-1e555cc663f7/exec-f24708f2-3f4d-4c94-a7fd-166cbf2d93e0.png",
+      "sha256": "033c0aa6934136963bdda2b6c7fb91cabbd6dfd4119de1f8115bd85a9d330941",
+      "bytes": 1340993
+    },
+    {
+      "file": "architecture-unet.png",
+      "source_image": "/Users/marscolonizer/.codex/generated_images/01a0d2ce-0032-7272-959e-1e555cc663f7/exec-0af25ff3-8340-4860-9248-c6408f945a77.png",
+      "sha256": "01d389de68431cd1e79ebc79e31fc3ee2cbec24f5bf01ccafedd52c85a45087e",
+      "bytes": 1715182
+    },
+    {
+      "file": "architecture-dit.png",
+      "source_image": "/Users/marscolonizer/.codex/generated_images/01a0d2ce-0032-7272-959e-1e555cc663f7/exec-dc7487ed-8e4b-4a99-b5dc-a093db8a1a27.png",
+      "sha256": "2a67c8cad9d880f1e505434063a01b61c5ba3ee7fa48bb466f374495340305c8",
+      "bytes": 1787023
+    }
+  ],
+  "visual_review": {
+    "overview": "checked observation shapes, alternative backbone, noise prediction, sampler feedback and separate training path",
+    "unet": "checked 16-8-4-8-16 lengths, 128-256-512 channels, same-resolution concatenations and FiLM",
+    "dit": "checked 16 action tokens,256 width,6 blocks,8 heads,1024 feedforward,condition addition and residual gates",
+    "notes": [
+      "U-Net is the project symmetric decoder design, not byte-equivalent to the official implementation.",
+      "DiT position encoding is action-chunk position j=0..15; diffusion step k has a separate embedding.",
+      "Drawing simplifications are clarified in architecture.md."
+    ]
+  }
+}

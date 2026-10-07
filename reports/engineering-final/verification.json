@@ -1,0 +1,171 @@
+{
+  "schema": "pusht_engineering_evidence_v1",
+  "training_executed": false,
+  "code_fingerprint": "54786e73f474f344ffb3572a0f6f05e26849a8dd3b4b57bbab5b79ef669ef81d",
+  "data": {
+    "fingerprint": "1acd5a4a79f5a8e4a56a5dbb209d49242565ca1e5d89b994df2b537f5be04a8c",
+    "episodes": 206,
+    "frames": 25650,
+    "windows": 25444,
+    "boundary_windows_checked": 412,
+    "images_decoded_for_sample_checks": 4,
+    "bounded_repeated_access_no_extra_decode": true
+  },
+  "act_parity": {
+    "checkpoint_sha256": "e12c51f026eb19e56c3602aff14907ff55c0e8859606ef416bf150961bef0fb1",
+    "reference_source": "/Users/marscolonizer/embodied-learning/wam-roadmap/mini-wam/src/mini_wam/models/act.py",
+    "reference_source_sha256": "5654900c2089b67a7d96f3f73405380cd78b3b9957eb9bf9a05808197b14b00e",
+    "vendored_source_sha256": "c5b77f3527c962940a074fd12ab8b2a1c0db993983fdf0b4b9fa9ee575a3ec12",
+    "observation_source": "real simulator reset plus seven successive environment steps",
+    "sample_count": 8,
+    "adjacent_different_image_pairs": 7,
+    "samples": [
+      {
+        "environment_step": 0,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": false,
+        "history_positions_differ": false
+      },
+      {
+        "environment_step": 1,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": true,
+        "history_positions_differ": true
+      },
+      {
+        "environment_step": 2,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": true,
+        "history_positions_differ": true
+      },
+      {
+        "environment_step": 3,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": true,
+        "history_positions_differ": true
+      },
+      {
+        "environment_step": 4,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": true,
+        "history_positions_differ": true
+      },
+      {
+        "environment_step": 5,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": true,
+        "history_positions_differ": true
+      },
+      {
+        "environment_step": 6,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": true,
+        "history_positions_differ": true
+      },
+      {
+        "environment_step": 7,
+        "max_absolute_action_error": 0.0,
+        "exact_equal": true,
+        "history_images_differ": true,
+        "history_positions_differ": true
+      }
+    ],
+    "max_absolute_action_error": 0.0,
+    "exact_equal": true
+  },
+  "act_smoke": {
+    "kind": "real_smoke",
+    "path": "/Users/marscolonizer/Documents/ChatGPT/Diffusion/pusht-diffusion/reports/engineering-final/act-smoke.json",
+    "steps": 12,
+    "summary": {
+      "episode_count": 1,
+      "mean_final_coverage": 0.14573960597199606,
+      "mean_max_coverage": 0.14573960597199606,
+      "mean_steps": 12.0,
+      "inference_p50_ms": 7.355542002187576,
+      "inference_p95_ms": 7.373616698896512,
+      "success_count_87": 0,
+      "success_rate_87": 0.0,
+      "wilson_95_87": [
+        0,
+        0.7934506856227626
+      ],
+      "mean_first_crossing_87": null,
+      "success_count_95": 0,
+      "success_rate_95": 0.0,
+      "wilson_95_95": [
+        0,
+        0.7934506856227626
+      ],
+      "mean_first_crossing_95": null
+    }
+  },
+  "video": {
+    "source_results": "/Users/marscolonizer/Documents/ChatGPT/Diffusion/pusht-diffusion/reports/engineering-final/act-smoke.json",
+    "source_sha256": "938cd3479ff31132a2641bfab284daa1175810d3b9b769ac196b21adc51d7225",
+    "scene_id": "diffusion-debug-000",
+    "evidence_kind": "real_smoke",
+    "video_sha256": "ec0978f4a5fec86f80a69b49170dd3e76201f0d3edabe6291ce7c80629c2aab6",
+    "max_coverage_error": 0.0,
+    "frames": 13,
+    "method": "deterministic replay of saved physical actions"
+  },
+  "ownership": {
+    "status": "protected_skeletons_only",
+    "functions": [
+      "models.py:16:__init__",
+      "models.py:18:forward",
+      "models.py:23:__init__",
+      "models.py:25:forward",
+      "models.py:33:__init__",
+      "models.py:35:forward",
+      "models.py:46:__init__",
+      "models.py:48:forward",
+      "models.py:57:__init__",
+      "models.py:59:forward",
+      "models.py:64:__init__",
+      "models.py:66:forward",
+      "models.py:77:__init__",
+      "models.py:79:encode_observation",
+      "models.py:81:denoise",
+      "training.py:6:diffusion_loss",
+      "training.py:10:train_step",
+      "training.py:18:update_ema",
+      "training.py:22:train"
+    ],
+    "interpretation": "Delivery boundary only. Learner is expected to replace these bodies later."
+  },
+  "packages": {
+    "torch": "2.11.0",
+    "torchvision": "0.26.0",
+    "numpy": "2.2.6",
+    "pyarrow": "25.0.1",
+    "Pillow": "12.3.0",
+    "gym-pusht": "0.1.6",
+    "gymnasium": "1.3.0",
+    "fastapi": "0.141.1",
+    "uvicorn": "0.52.4",
+    "imageio": "2.37.4",
+    "av": "15.1.0",
+    "diffusers": "0.35.2",
+    "regex": "2025.9.18",
+    "importlib-metadata": "8.7.0",
+    "zipp": "3.23.0",
+    "pytest": "9.1.1",
+    "httpx": "0.28.1"
+  },
+  "elapsed_seconds": 2.0685711670012097,
+  "limitations": [
+    "No diffusion model exists yet.",
+    "No training or end-to-end optimizer resume has been tested.",
+    "12-step ACT smoke is not formal effectiveness evidence.",
+    "Browser verification is handled separately by parent."
+  ]
+}

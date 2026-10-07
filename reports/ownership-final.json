@@ -1,0 +1,25 @@
+{
+  "status": "protected_skeletons_only",
+  "functions": [
+    "models.py:16:__init__",
+    "models.py:18:forward",
+    "models.py:23:__init__",
+    "models.py:25:forward",
+    "models.py:33:__init__",
+    "models.py:35:forward",
+    "models.py:46:__init__",
+    "models.py:48:forward",
+    "models.py:57:__init__",
+    "models.py:59:forward",
+    "models.py:64:__init__",
+    "models.py:66:forward",
+    "models.py:77:__init__",
+    "models.py:79:encode_observation",
+    "models.py:81:denoise",
+    "training.py:6:diffusion_loss",
+    "training.py:10:train_step",
+    "training.py:18:update_ema",
+    "training.py:22:train"
+  ],
+  "interpretation": "Delivery boundary only. Learner is expected to replace these bodies later."
+}

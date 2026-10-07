@@ -1,0 +1,34 @@
+{
+  "source_workspace": "/Users/marscolonizer/embodied-learning/wam-roadmap/mini-wam",
+  "source_git_head": "2b038e61047dd15029aa9abf273d580c763519d1",
+  "files": [
+    {
+      "source": "src/mini_wam/models/act.py",
+      "destination": "src/pusht_diffusion/baselines/act.py",
+      "source_sha256": "5654900c2089b67a7d96f3f73405380cd78b3b9957eb9bf9a05808197b14b00e",
+      "copied_sha256": "c5b77f3527c962940a074fd12ab8b2a1c0db993983fdf0b4b9fa9ee575a3ec12",
+      "change": "ACT training loss helpers omitted"
+    },
+    {
+      "source": "src/mini_wam/training/reproducibility.py",
+      "destination": "src/pusht_diffusion/reproducibility.py",
+      "source_sha256": "e5ab4dea1b84195824b3116ae44c91238c342cb01dd1b90549f27cc37cc93c2c",
+      "copied_sha256": "e5ab4dea1b84195824b3116ae44c91238c342cb01dd1b90549f27cc37cc93c2c",
+      "change": "initial verbatim copy; see project changes"
+    },
+    {
+      "source": "src/mini_wam/data/act_audit.py",
+      "destination": "src/pusht_diffusion/_scalar_audit.py",
+      "source_sha256": "424e7b2efbd00b4894a1a7dc332398666030ccf084f9656b14390d5c4dc851a1",
+      "copied_sha256": "424e7b2efbd00b4894a1a7dc332398666030ccf084f9656b14390d5c4dc851a1",
+      "change": "initial verbatim copy; see project changes"
+    }
+  ],
+  "notes": [
+    "Production package does not import the old workspace.",
+    "ACT model copied before masked_l1_loss; pre-existing training loss helper functions omitted.",
+    "reproducibility.py extended only with generic named-generator capture/restore.",
+    "_scalar_audit.py kept as the original scalar identity validator; new minmax normalization lives in data.py.",
+    "Environment reset semantics, ACT normalization and continuous session structure adapted from original evaluation/act.py and studio/pusht.py, live.py."
+  ]
+}

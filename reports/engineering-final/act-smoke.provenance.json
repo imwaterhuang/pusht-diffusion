@@ -1,0 +1,10 @@
+{
+  "source_results": "/Users/marscolonizer/Documents/ChatGPT/Diffusion/pusht-diffusion/reports/engineering-final/act-smoke.json",
+  "source_sha256": "938cd3479ff31132a2641bfab284daa1175810d3b9b769ac196b21adc51d7225",
+  "scene_id": "diffusion-debug-000",
+  "evidence_kind": "real_smoke",
+  "video_sha256": "ec0978f4a5fec86f80a69b49170dd3e76201f0d3edabe6291ce7c80629c2aab6",
+  "max_coverage_error": 0.0,
+  "frames": 13,
+  "method": "deterministic replay of saved physical actions"
+}

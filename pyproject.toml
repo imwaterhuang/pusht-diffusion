@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "pusht-diffusion"
+version = "0.1.0"
+description = "Learner-owned diffusion models with reproducible Push-T peripheral engineering"
+requires-python = ">=3.11"
+dependencies = ["torch==2.11.0", "torchvision==0.26.0", "numpy>=2.0", "pyarrow>=18", "Pillow>=11", "diffusers==0.35.2", "gym-pusht==0.1.6", "fastapi>=0.115", "uvicorn>=0.30", "imageio>=2.36", "av>=14"]
+[project.optional-dependencies]
+test = ["pytest>=8", "httpx>=0.28"]
+[project.scripts]
+pusht-diffusion = "pusht_diffusion.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+pusht_diffusion = ["web/*.html"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

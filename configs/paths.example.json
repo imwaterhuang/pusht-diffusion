@@ -1,0 +1,7 @@
+{
+  "dataset_root": "/absolute/path/to/pusht_image",
+  "image_cache": null,
+  "audit_path": "reports/data-audit.json",
+  "output_dir": "runs/unet",
+  "checkpoint_mirror": null
+}
