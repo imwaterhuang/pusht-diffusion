@@ -11,17 +11,17 @@
 - 本次评测、选择、报告及场景相关检查共 **19 passed**；不代表旧全套测试已适配或通过。
 - 全206条演示训练、单训练种子seed0；最终场景不是专家演示留出集，不能证明与训练姿态完全不重合。DiT与同协议ACT比较尚未完成。
 
-## 2026-10-07 更新：Colab L4 正式训练已完成
+## 2026-10-07 更新：Colab L4 正式训练已完成（评测前记录）
 
 - 用户已实现观测编码、U-Net、扩散损失、参数更新和 EMA。旧的“所有入口未实现”描述仅属于下方 9 月交付快照。
 - CPU 真训练 100 步通过：batch64，前10步平均 loss 1.4208，后10步 0.1763；完整检查点保存与重载通过。证据：`runs/cpu-smoke-100-20261007/verification.json`。
 - CPU 精确恢复通过：100→102 与 100→101→102 的权重、EMA、优化器、LR、sampler、RNG 逐项相等。证据：`runs/cpu-resume-20261007/verification.json`。
-- 当前 U-Net 已通过推理适配器接入采样，真实检查点能生成有限 `[16,2]` 动作；尚无正式闭环成功率。
+- 当时 U-Net 已通过推理适配器接入采样，真实检查点能生成有限 `[16,2]` 动作；正式闭环结果见上方最终评测记录。
 - 增加带中文注释的 `scripts/colab_train.py`、`scripts/colab_preflight.py` 和 `notebooks/PushT_Diffusion_UNet_L4_20261007.ipynb`。
 - 正式协议：40,000 步、batch64、seed0、float32；每1,000步保存 last，每5,000步保留独立候选快照；开发场景选点延后执行。
 - L4 + 8 个 DataLoader workers 的真实预检查已通过：100步训练、Drive校验和、精确恢复、小批拟合。固定16样本的独立噪声检查 loss 1.45885 → 0.09129（400步）。证据：`reports/colab-l4-20261007/preflight-workers8.json`。
 - 20步同步测速平均 0.1029秒/步（数据等待0.00215秒、传输0.00614秒、更新0.09461秒），40k纯更新估计1.143小时，未计保存和评测。
-- 用户报告页面中断后，重新连接 L4 并从 Drive 核实：`last.pt` 已完成40,000步，校验和与完整检查点结构验证通过，`status.json` 为 `complete`，无需补训。最终loss0.0042、近100步均值0.0069；原运行耗时4578.33秒。证据：`reports/colab-l4-20261007/completion-verification.json`。这证明训练及保存完成，闭环成功率仍待评测。
+- 用户报告页面中断后，重新连接 L4 并从 Drive 核实：`last.pt` 已完成40,000步，校验和与完整检查点结构验证通过，`status.json` 为 `complete`，无需补训。最终loss0.0042、近100步均值0.0069；原运行耗时4578.33秒。证据：`reports/colab-l4-20261007/completion-verification.json`。该记录证明训练及保存完成；后续闭环结果见上方最终评测记录。
 - Notebook：https://colab.research.google.com/drive/1idb6vRFXNuDWisXpInCqWjp17I31KRyJ
 - Drive目录：`MyDrive/pusht-diffusion/20261007-unet-seed0/formal/`；运行时数据在本地/content，检查点与日志持久保存Drive。
 - 最终8-worker源码和数据包：`pusht-diffusion-colab-20261007-workers8.zip`，云端SHA256 `118ea94039afc5e6d9babf47b752cd15c8db93f34561cd9355721a739d38b94b`；完整初始包另行保留。
